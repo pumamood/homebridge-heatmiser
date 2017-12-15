@@ -16,13 +16,7 @@ function HeatmiserWifi(log, config, api) {
     this.log = log;
     this.ip_address = config["ip_address"];
     this.pin = config["pin"];
-    this.lock = new AsyncLock({ timeout: config["timeout"] || 5000 });
-    //this.hm = new heatmiser.Wifi(this.ip_address, this.pin);
-    //this.hm.on('error', (err) => {
-    //    this.log('An error occurred! ' + err.message);
-    //});
-
-}
+    this.lock = new AsyncLock({ timeout: config["timeout"] || 5000 });}
 
 HeatmiserWifi.prototype = {
 
@@ -111,7 +105,7 @@ HeatmiserWifi.prototype = {
             hm.read_device(function (data) {
                 this.log('getCurrentTemperature succeeded!');
 
-                var c = data.dcb.remote_air_temp;
+                var c = data.dcb.built_in_air_temp;
 
                 done(e, c);
             }.bind(this));
