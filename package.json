@@ -1,0 +1,25 @@
+{
+  "name": "homebridge-heatmiser",
+  "version": "0.0.1",
+  "description": "Heatmiser Thermostats Homebridge plugin",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+   "dependencies": { 
+     "heatmiser":"^2.0.0",
+     "async-lock":"^1.1.0"
+   },
+   "author": "Puma",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pumamood/homebridge-heatmiser.git"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "Heatmiser",
+    "thermostat"
+  ]
+}
+
