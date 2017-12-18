@@ -9,7 +9,7 @@ Uses Thosirl implementation revisited as standalone homebridge plugin (not legac
 
 Tested with Heatmiser Wifi accessory here, not with Netmonitor.
 
-# Installing Plugins
+# Installing Plugin
 
 Plugin is NodeJS module published through NPM 
 
