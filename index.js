@@ -16,6 +16,8 @@ function HeatmiserWifi(log, config, api) {
     this.log = log;
     this.ip_address = config["ip_address"];
     this.pin = config["pin"];
+    this.port = config["port"];
+    this.model = config["model"];
     this.lock = new AsyncLock({ timeout: config["timeout"] || 5000 });}
 
 HeatmiserWifi.prototype = {
@@ -30,14 +32,14 @@ HeatmiserWifi.prototype = {
 
     getCurrentHeatingCoolingState: function (callback) {
         this.lock.acquire(key, function (done) {
-            // async work   
+            // async work
             this.log("getCurrentHeatingCoolingState");
 
             //Characteristic.CurrentHeatingCoolingState.OFF = 0;
             //Characteristic.CurrentHeatingCoolingState.HEAT = 1;
             //Characteristic.CurrentHeatingCoolingState.COOL = 2;
             var e = null;
-            var hm = new heatmiser.Wifi(this.ip_address, this.pin);
+            var hm = new heatmiser.Wifi(this.ip_address, this.pin, this.port, this.model);
             hm.on('error', (err) => {
                 this.log('An error occurred! ' + err.message);
                 e = err;
@@ -69,7 +71,7 @@ HeatmiserWifi.prototype = {
         this.lock.acquire(key, function (done) {
             this.log("getTargetHeatingCoolingState");
             var e = null;
-            var hm = new heatmiser.Wifi(this.ip_address, this.pin);
+            var hm = new heatmiser.Wifi(this.ip_address, this.pin, this.port, this.model);
             hm.on('error', (err) => {
                 this.log('An error occurred! ' + err.message);
                 e = err;
@@ -97,7 +99,7 @@ HeatmiserWifi.prototype = {
             this.log("getCurrentTemperature");
 
             var e = null;
-            var hm = new heatmiser.Wifi(this.ip_address, this.pin);
+            var hm = new heatmiser.Wifi(this.ip_address, this.pin, this.port, this.model);
             hm.on('error', (err) => {
                 this.log('An error occurred! ' + err.message);
                 e = err;
@@ -119,7 +121,7 @@ HeatmiserWifi.prototype = {
             this.log("getTargetTemperature");
 
             var e = null;
-            var hm = new heatmiser.Wifi(this.ip_address, this.pin);
+            var hm = new heatmiser.Wifi(this.ip_address, this.pin, this.port, this.model);
             hm.on('error', (err) => {
                 this.log('An error occurred! ' + err.message);
                 e = err;
@@ -144,7 +146,7 @@ HeatmiserWifi.prototype = {
             }
 
             var e = null;
-            var hm = new heatmiser.Wifi(this.ip_address, this.pin);
+            var hm = new heatmiser.Wifi(this.ip_address, this.pin, this.port, this.model);
             hm.on('error', (err) => {
                 this.log('An error occurred! ' + err.message);
                 e = err;
@@ -159,7 +161,7 @@ HeatmiserWifi.prototype = {
             this.log("getTemperatureDisplayUnits");
 
             var e = null;
-            var hm = new heatmiser.Wifi(this.ip_address, this.pin);
+            var hm = new heatmiser.Wifi(this.ip_address, this.pin, this.port, this.model);
             hm.on('error', (err) => {
                 this.log('An error occurred! ' + err.message);
                 e = err;
