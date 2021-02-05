@@ -28,7 +28,7 @@ Options for "your_model" are: "DT", "DT-E", "PRT", "PRT-E", "PRTHW" (see https:/
       "accessory": "HeatmiserWifi",
       "ip_address": "your_heatmiserwifi_ip",
       "pin": your_pin,
-      "port": 8086,
+      "port": 8068,
       "model": "your_model",
       "name": "Kitchen Thermostat",
       "room": "Kitchen"
