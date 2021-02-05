@@ -20,10 +20,11 @@ You can install this plugin the same way you installed Homebridge - as a global 
 
 Add to config.json under "accessories" array
 * For Heatmiser WiFi thermostats
+Options for "your_model" are: "DT", "DT-E", "PRT", "PRT-E", "PRTHW" (see https://github.com/carlossg/heatmiser-node/blob/master/lib/wifi.js#L40)
 ```json
     {
       "accessory": "HeatmiserWifi",
-      "ip_address": "your_netmonitor_ip",
+      "ip_address": "your_heatmiserwifi_ip",
       "pin": your_pin,
       "port": 8086,
       "model": "your_model",
