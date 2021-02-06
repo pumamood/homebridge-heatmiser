@@ -11,7 +11,7 @@ Tested with Heatmiser Wifi accessory here, not with Netmonitor.
 
 # Installing Plugin
 
-Plugin is NodeJS module published through NPM 
+Plugin is NodeJS module published through NPM
 
 You can install this plugin the same way you installed Homebridge - as a global NPM module. For example:
 
@@ -20,11 +20,16 @@ You can install this plugin the same way you installed Homebridge - as a global 
 
 Add to config.json under "accessories" array
 * For Heatmiser WiFi thermostats
+
+Options for "your_model" are: "DT", "DT-E", "PRT", "PRT-E", "PRTHW" (see https://github.com/carlossg/heatmiser-node/blob/master/lib/wifi.js#L40)
+
 ```json
     {
       "accessory": "HeatmiserWifi",
-      "ip_address": "your_netmonitor_ip",
+      "ip_address": "your_heatmiserwifi_ip",
       "pin": your_pin,
+      "port": 8068,
+      "model": "your_model",
       "name": "Kitchen Thermostat",
       "room": "Kitchen"
     }
@@ -37,7 +42,7 @@ Add to config.json under "accessories" array
       "ip_address": "your_netmonitor_ip",
       "pin": your_pin,
       "network_address": 1, // Network Address of the Stat you want to talk to
-      "name": "Kitchen Thermostat", 
+      "name": "Kitchen Thermostat",
       "room": "Kitchen"
     }
 ```
