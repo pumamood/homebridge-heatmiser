@@ -18,6 +18,8 @@ function HeatmiserWifi(log, config, api) {
     this.pin = config["pin"];
     this.port = config["port"];
     this.model = config["model"];
+    this.mintemp = config["mintemp"];
+    this.maxtemp = config["maxtemp"];
     this.lock = new AsyncLock({ timeout: config["timeout"] || 5000 });}
 
 HeatmiserWifi.prototype = {
@@ -137,7 +139,6 @@ HeatmiserWifi.prototype = {
 
     setTargetTemperature: function (targetTemperature, callback) {
         this.lock.acquire(key, function (done) {
-            targetTemperature=Math.round(targetTemperature);
             this.log("setTargetTemperature " + targetTemperature);
             //this.log(targetTemperature);
             var dcb1 = {
@@ -213,6 +214,7 @@ HeatmiserWifi.prototype = {
 
         thermostatService.getCharacteristic(Characteristic.TargetTemperature).on('set', this.setTargetTemperature.bind(this));
         thermostatService.getCharacteristic(Characteristic.TargetTemperature).on('get', this.getTargetTemperature.bind(this));
+        thermostatService.getCharacteristic(Characteristic.TargetTemperature).setProps({minValue: this.mintemp, maxValue: this.maxtemp, minStep: 1});
 
         thermostatService.getCharacteristic(Characteristic.TemperatureDisplayUnits).on('set', this.setTemperatureDisplayUnits.bind(this));
         thermostatService.getCharacteristic(Characteristic.TemperatureDisplayUnits).on('get', this.getTemperatureDisplayUnits.bind(this));
