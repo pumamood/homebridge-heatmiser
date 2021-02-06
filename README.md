@@ -23,6 +23,8 @@ Add to config.json under "accessories" array
 
 Options for "your_model" are: "DT", "DT-E", "PRT", "PRT-E", "PRTHW" (see https://github.com/carlossg/heatmiser-node/blob/master/lib/wifi.js#L40)
 
+The mintemp & maxtemp options set the range on the thermostat faceplate. The target temperature step size is now 1 degree as required by Heatmiser
+
 ```json
     {
       "accessory": "HeatmiserWifi",
@@ -30,8 +32,10 @@ Options for "your_model" are: "DT", "DT-E", "PRT", "PRT-E", "PRTHW" (see https:/
       "pin": your_pin,
       "port": 8068,
       "model": "your_model",
-      "name": "Kitchen Thermostat",
-      "room": "Kitchen"
+      "mintemp": 10,
+      "maxtemp": 30,
+      "name": "Thermostat",
+      "room": "Hall"
     }
 ```
 
