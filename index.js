@@ -137,6 +137,7 @@ HeatmiserWifi.prototype = {
 
     setTargetTemperature: function (targetTemperature, callback) {
         this.lock.acquire(key, function (done) {
+            targetTemperature=Math.round(targetTemperature);
             this.log("setTargetTemperature " + targetTemperature);
             //this.log(targetTemperature);
             var dcb1 = {
